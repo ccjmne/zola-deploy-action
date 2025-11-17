@@ -3,8 +3,8 @@
 Forked from https://github.com/shalzz/zola-deploy-action.  
 The only difference from that upstream is that this action works off the `zola/next` branch.
 
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fshalzz%2Fzola-deploy-action%2Fbadge&style=flat)](https://actions-badge.atrox.dev/shalzz/zola-deploy-action/goto)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/shalzz/zola-deploy-action?sort=semver)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fccjmne%2Fzola-deploy-action%2Fbadge&style=flat)](https://actions-badge.atrox.dev/ccjmne/zola-deploy-action/goto)
+![GitHub release (master SemVer)](https://img.shields.io/github/v/release/ccjmne/zola-deploy-action?sort=semver)
 
 A GitHub action to automatically build and deploy your [zola] site to the master
 branch as GitHub Pages.
@@ -37,7 +37,7 @@ jobs:
     - name: Checkout main
       uses: actions/checkout@v4
     - name: Build and deploy
-      uses: shalzz/zola-deploy-action@v0.21.0
+      uses: ccjmne/zola-deploy-action@vmaster
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
@@ -61,7 +61,7 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v4
       - name: Build only
-        uses: shalzz/zola-deploy-action@v0.21.0
+        uses: ccjmne/zola-deploy-action@vmaster
         env:
           BUILD_DIR: docs
           BUILD_ONLY: true
@@ -76,7 +76,7 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v4
       - name: Build and deploy
-        uses: shalzz/zola-deploy-action@v0.21.0
+        uses: ccjmne/zola-deploy-action@vmaster
         env:
           BUILD_DIR: docs
           PAGES_BRANCH: gh-pages
