@@ -1,8 +1,8 @@
-from debian:stable-slim
-MAINTAINER Shaleen Jain <shaleen@jain.sh>
+from archlinux:base
+MAINTAINER Éric NICOLAS (ccjmne) <ccjmne@gmail.com>
 
-LABEL "com.github.actions.name"="Zola Deploy to Pages"
-LABEL "com.github.actions.description"="Build and deploy a Zola site to GitHub Pages"
+LABEL "com.github.actions.name"="Zola Deploy to Pages (with zola/next)"
+LABEL "com.github.actions.description"="Build and deploy a Zola site to GitHub Pages, using the latest features from zola/next"
 LABEL "com.github.actions.icon"="zap"
 LABEL "com.github.actions.color"="green"
 
@@ -11,11 +11,11 @@ ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
-RUN apt-get update && apt-get install -y wget git
-
-RUN wget -q -O - \
-"https://github.com/getzola/zola/releases/download/v0.21.0/zola-v0.21.0-x86_64-unknown-linux-gnu.tar.gz" \
-| tar xzf - -C /usr/local/bin
+WORKDIR /build
+RUN pacman -Sy --noconfirm git vim rust cargo
+RUN git clone --depth 1 --branch next https://github.com/getzola/zola zola .
+RUN cargo build --release
+RUN cp ./target/release/zola /usr/local/bin
 
 COPY entrypoint.sh /entrypoint.sh
 
