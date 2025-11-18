@@ -1,7 +1,10 @@
 # Zola Deploy Action
 
-Forked from https://github.com/shalzz/zola-deploy-action.  
-The only difference from that upstream is that this action works off the `zola/next` branch.
+> [!IMPORTANT]
+>
+> Forked from [shalzz/zola-deploy-action](https://github.com/shalzz/zola-deploy-action.).  
+> The only functional difference from that upstream is that this action works
+> off the `zola/next` branch.
 
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fccjmne%2Fzola-deploy-action%2Fbadge&style=flat)](https://actions-badge.atrox.dev/ccjmne/zola-deploy-action/goto)
 ![GitHub release (master SemVer)](https://img.shields.io/github/v/release/ccjmne/zola-deploy-action?sort=semver)
