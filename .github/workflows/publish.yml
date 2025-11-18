@@ -15,6 +15,20 @@ jobs:
       - name: Set up Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Resolve SHA of getzola:zola/next
+        id: zola
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {data} = await github.rest.repos.getBranch({
+              owner: 'getzola',
+              repo: 'zola',
+              branch: 'next'
+            });
+            const sha = data.commit.sha;
+            core.setOutput('sha', sha);
+            core.setOutput('short', sha.substring(0,7));
+
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
@@ -22,10 +36,12 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push latest
+      - name: Build and push image for getzola:zola/next
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           platforms: linux/amd64
-          tags: ghcr.io/${{ github.repository_owner }}/zola-deploy-action:latest
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/zola-deploy-action:latest
+            ghcr.io/${{ github.repository_owner }}/zola-deploy-action:next-${{ steps.zola.outputs.short }}
