@@ -53,6 +53,12 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository_owner }}/zola-deploy-action:latest
             ghcr.io/${{ github.repository_owner }}/zola-deploy-action:${{ steps.zola.outputs.tag }}
+          labels: |
+            org.opencontainers.image.title=Zola Deploy Action
+            org.opencontainers.image.version=${{ steps.zola.outputs.tag }}
+            org.opencontainers.image.description=Built against upstream getzola/zola@${{ steps.zola.outputs.short }} (Image tag: ${{ steps.zola.outputs.tag }})
+            org.opencontainers.image.source=${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
 
       - name: Create release
         if: steps.release_check.outputs.found == false
@@ -64,7 +70,6 @@ jobs:
               owner:                  context.repo.owner,
               tag_name:               '${{ steps.zola.outputs.tag }}',
               name:                   '${{ steps.zola.outputs.tag }}',
-              target_commitish:       context.sha,
               generate_release_notes: false,
               body:                   `Built against getzola/zola@${{ steps.zola.outputs.short }}`
             })
