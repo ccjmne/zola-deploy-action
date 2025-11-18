@@ -32,8 +32,3 @@ jobs:
           push: true
           platforms: linux/amd64
           tags: ghcr.io/${{ github.repository_owner }}/zola-deploy-action:latest
-
-      - name: Verify image
-        run: |
-          docker pull ghcr.io/${{ github.repository_owner }}/zola-deploy-action:latest
-          docker image inspect ghcr.io/${{ github.repository_owner }}/zola-deploy-action:latest --format '{{.Id}}'
