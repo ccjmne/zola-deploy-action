@@ -110,5 +110,3 @@ which is where GitHub expects it to be.
 ##
 
 Thanks and enjoy your day!
-
-<a href="https://www.buymeacoffee.com/shaleen"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Beer&emoji=🍺&slug=shaleen&button_colour=40DCA5&font_colour=ffffff&font_family=Bree&outline_colour=000000&coffee_colour=FFDD00" /></a>
