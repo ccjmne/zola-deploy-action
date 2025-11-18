@@ -13,7 +13,7 @@ ENV LANGUAGE en_US.UTF-8
 
 WORKDIR /build
 RUN pacman -Sy --noconfirm git vim rust cargo
-RUN git clone --depth 1 --branch next https://github.com/getzola/zola zola .
+RUN git clone --depth 1 --branch next https://github.com/getzola/zola .
 RUN cargo build --release
 RUN cp ./target/release/zola /usr/local/bin
 
